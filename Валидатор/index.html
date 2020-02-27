@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <form id="myform">
+            <div>
+                <label id = "pohone">Phone</label>
+                <input type="text" id = "phone" name="phone" placeholder="phone">    
+          </div>
+           <div>
+                <label id = "emaile">email</label>
+                <input type="text" id = "email" name="email" placeholder="email">
+           </div>
+            <br>
+            <button type="submit">Submit</button>
+            <button type="reset">reset</button>
+        </form>
+    </section>
+    
+    <script src="js/validator.js"></script>
+
+    <script>
+        const valid = new Validator({
+            selector: '#myform',
+            pattern: {
+                //phone: /^\+375\d{9}$/
+            },
+            method: {
+            'phone': [
+                ['notEmpty'],
+                ['pattern', 'phone']
+            ],
+            'email': [
+                ['notEmpty'],
+                ['pattern', 'email']
+            ]
+        }
+        })
+
+        valid.init();
+    </script>
+</body>
+</html>
